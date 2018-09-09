@@ -18,6 +18,8 @@ The Android application utilizes mult-window user interface, stores data locally
 <img align="left" src="/resources/sample2.png" alt="Sample 2" height="330" width="210">
 <img align="center" src="/resources/sample3.png" alt="Sample 3" height="330" width="210">
 
+**Note:** This application will replace an older application deployed on [Google Play](https://play.google.com/store/apps/details?id=com.cardiobuddy)
+
 ## Installiation
 1. Server
 ```bash
