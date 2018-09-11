@@ -9,8 +9,9 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(filename)s - %(l
 
 
 DB_NAME = 'blah'
-connection = mysql.connector.connect(user='blah', password='blah', host='localhost') # this should all be in a separate file
+connection = mysql.connector.connect(option_files='mysql.cfg') # using non root with basic read and write
 cursor = connection.cursor()
+
 
 def setup():
     """Create database and tables if it does not exist"""
@@ -36,7 +37,7 @@ def setup():
         "  `u_id` int(7) NOT NULL AUTO_INCREMENT,"
         "  `role` varchar(10) NOT NULL,"
         "  `email` varchar(320) NOT NULL UNIQUE,"
-        "  `password` varchar(255) NOT NULL,"
+        "  `password` char(64) NOT NULL,"
         "  `fname` varchar(25) NOT NULL,"
         "  `lname` varchar(25) NOT NULL,"
         "  PRIMARY KEY (`u_id`)"
@@ -66,7 +67,8 @@ def setup():
 def addUser(user):
     """Add single user"""
     logging.info("ADDING USER > %s", user)
-    command = ("INSERT INTO users (role, email, password, fname, lname) VALUES (%s, %s, SHA1(%s), %s, %s)")
+    # encrypt user pass
+    command = ("INSERT INTO users (role, email, password, fname, lname) VALUES (%s, %s, SHA2(%s, 256), %s, %s)")
     logging.info("EXECUTING SQL: %s", command)
 
     try:
