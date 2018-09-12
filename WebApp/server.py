@@ -2,18 +2,15 @@
 
     Application server utilizing custom built API and Auth0's JWT
 """
+import controller as c
+import datetime, json, jwt
 from flask import Flask, jsonify, make_response, request
 from functools import wraps
-import datetime, json, jwt
-import controller as c
 
 
-#TODO build custom response/error types with @app.errorhandler
-#TODO needs user validation yo
-
-
+#TODO needs user validation and code clean up
 app = Flask('/')
-appsecret = "blah" # this needs to go in app config
+
 
 def token_required(d):
     @wraps(d)
@@ -21,11 +18,11 @@ def token_required(d):
         if 'token' in request.args:
             token = request.args.get('token')
             try:
-                data = jwt.decode(token, appsecret)
+                data = jwt.decode(token, secret)
             except:
-                return "INCORRECT TOKEN"
+                return make_response("HTTP/1.1 401 - Unauthorized\n", 401)
         else:
-            return "NO TOKEN\n"
+            return make_response("HTTP/1.1 401 - Unauthorized\n", 401)
         return d(*args, **kwargs)
     return decorated
 
@@ -35,22 +32,27 @@ def api_user():
     if request.method == 'GET':
         if 'email' in request.args:
             user = c.getUserDB(request.args['email'])
-            return jsonify({'user': user})
+            jdata = jsonify({'email': user[0], 'password': user[1], 'fname': user[2], 'lname': user[3]})
+            return make_response(jdata, 200)
         else:
-            return "ERROR\n"
+            return make_response("HTTP/1.1 400 - Bad Request\n", 400)
+
     elif request.method == 'POST':
         if request.headers['Content-Type'] == 'application/json':
             data = request.json
-            c.addUserDB((data['role'], data['email'], data['password'], data['fname'], data['lname']))
-            return "SUCCESS\n"
+            c.addUserDB((data['email'], data['password'], data['fname'], data['lname']))
+            return make_response("HTTP/1.1 201 - Created\n", 201)
         else:
-            return "ERROR\n"
+            return make_response("HTTP/1.1 400 - Bad Request\n", 400)
+
     elif request.method == 'DELETE':
         if 'email' in request.args:
             c.deleteUserDB(request.args['email'])
-            return "SUCCESS\n"
+            return make_response("HTTP/1.1 200 - Ok\n", 200)
         else:
-            return "ERROR\n"
+            return make_response("HTTP/1.1 400 - Bad Request\n", 400)
+    else:
+        return make_response("HTTP/1.1 405 - Method Not Allowed\n", 405)
 
 @app.route("/workouts", methods = ['GET', 'POST', 'DELETE'])
 @token_required
@@ -58,9 +60,10 @@ def api_workouts():
     if request.method == 'GET':
         if 'u_id' in request.args:
             workouts = c.getAllWorkoutsDB(request.args.get('u_id'))
-            return jsonify({'workouts': workouts})
+            return make_response(jsonify({'workouts': workouts}), 200)
         else:
-            return "WORKOUT GET ERROR\n"
+            return make_response("HTTP/1.1 400 - Bad Request\n", 400)
+
     elif request.method == 'POST':
         if request.headers['Content-Type'] == 'application/json':
             workouts = []
@@ -68,33 +71,39 @@ def api_workouts():
             for d in data:
                 workouts.append((d['u_id'], d['date'], d['type'], d['duration'], d['calories'], d['distance'], d['notes']))
             c.addAllWorkoutsDB(workouts)
-            return "SUCCESS\n"
+            return make_response("HTTP/1.1 201 - Created\n", 201)
         else:
-            return "ERROR\n"
+            return make_response("HTTP/1.1 400 - Bad Request\n", 400)
+
     elif request.method == 'DELETE':
         if 'u_id' in request.args:
             c.deleteAllWorkoutsDB(request.args['u_id'])
-            return "SUCCESS\n"
+            return make_response("HTTP/1.1 200 - Ok\n", 200)
         else:
-            return "ERROR\n"
+            return make_response("HTTP/1.1 400 - Bad Request\n", 400)
+    else:
+        return make_response("HTTP/1.1 405 - Method Not Allowed\n", 405)
 
 @app.route("/signup", methods = ['POST'])
 def api_signup():
     if request.method == 'POST':
         if request.headers['Content-Type'] == 'application/json':
             data = request.json
-            if data['email'] and data['password']:
-                token = jwt.encode({'user' : data['email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, appsecret)
+            if data[0]['email'] and data[0]['password']:
+                token = jwt.encode({'user' : data[0]['email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, secret)
                 # save email, password, token to db
                 return jsonify({'token': token.decode('UTF-8')})
             else:
-                return "ERROR\n"
+                return make_response("HTTP/1.1 400 - Bad Request\n", 400)
         else:
-            return "ERROR\n"
+            return make_response("HTTP/1.1 400 - Bad Request\n", 400)
+    else:
+        return make_response("HTTP/1.1 405 - Method Not Allowed\n", 405)
 
 
 if __name__ == '__main__':
-    app.debug = True
+    app.config.from_pyfile("flask.cfg", silent=False)
+    secret = app.config.get("SECRET")
     app.run()
 
 

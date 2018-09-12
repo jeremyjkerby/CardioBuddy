@@ -35,7 +35,6 @@ def setup():
     TABLES['users'] = (
         "CREATE TABLE `users` ("
         "  `u_id` int(7) NOT NULL AUTO_INCREMENT,"
-        "  `role` varchar(10) NOT NULL,"
         "  `email` varchar(320) NOT NULL UNIQUE,"
         "  `password` char(64) NOT NULL,"
         "  `fname` varchar(25) NOT NULL,"
@@ -67,8 +66,7 @@ def setup():
 def addUser(user):
     """Add single user"""
     logging.info("ADDING USER > %s", user)
-    # encrypt user pass
-    command = ("INSERT INTO users (role, email, password, fname, lname) VALUES (%s, %s, SHA2(%s, 256), %s, %s)")
+    command = ("INSERT INTO users (email, password, fname, lname) VALUES (%s, SHA2(%s, 256), %s, %s)")
     logging.info("EXECUTING SQL: %s", command)
 
     try:
@@ -85,7 +83,7 @@ def addUser(user):
 def getUser(email):
     """Return user data for given email"""
     print("GETTING USER DATA FOR > %s", email)
-    command = ("SELECT role, email, password, fname, lname FROM users WHERE email='" + email + "'")
+    command = ("SELECT email, password, fname, lname FROM users WHERE email='" + email + "'")
     print("EXECUTING SQL: %s", command)
 
     try:
@@ -146,7 +144,7 @@ def getAllWorkouts(u_id):
     for (w_id, w_date, w_type, w_duration, w_calories, w_distance, w_note) in cursor:
         workouts[w_id] = {"date": w_date, "type": w_type, "duration": w_duration, "calories": w_calories, "distance": w_distance, "note": w_note}
     cursor.close()
-    return workouts # return dictionary
+    return workouts
 
 def deleteAllWorkouts(u_id):
     """Delete all workouts for given user id"""
