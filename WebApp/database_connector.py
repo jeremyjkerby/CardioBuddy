@@ -83,7 +83,7 @@ def addUser(user):
 def getUser(email):
     """Return user data for given email"""
     print("GETTING USER DATA FOR > %s", email)
-    command = ("SELECT email, password, fname, lname FROM users WHERE email='" + email + "'")
+    command = ("SELECT u_id, email, password, fname, lname FROM users WHERE email='" + email + "'")
     print("EXECUTING SQL: %s", command)
 
     try:

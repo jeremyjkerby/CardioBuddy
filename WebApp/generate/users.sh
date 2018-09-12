@@ -7,7 +7,7 @@ lnames=(flowers ludlum garcia ogren svedberg)
 
 for n in {0..4}
 do
-    curl -H "Content-type: application/json" -X POST "http://127.0.0.1:5000/user?token=$1" -d '{
+    curl --header "Content-type: application/json" --header "Authorization: token=$1" -X POST "http://127.0.0.1:5000/user" -d '{
         "email": "'${fnames[$n]}'@gmail.com", 
         "password": "123'$n'", 
         "fname": "'${fnames[$n]}'", 

@@ -8,7 +8,7 @@ for i in {0..4}
 do
     for n in {0..4}
     do
-        curl -H "Content-type: application/json" -X POST "http://127.0.0.1:5000/workouts?token=$1" -d '[
+        curl --header "Content-type: application/json" --header "Authorization: token=$1" -X POST "http://127.0.0.1:5000/workouts" -d '[
         {
             "u_id": "'$i'",
             "date": "1112223334",

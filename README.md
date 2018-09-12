@@ -50,40 +50,38 @@ Once there is a server setup, you may execute the following API calls using cURL
 ### User
 Create new user:
 ```bash
-curl -H "Content-type: application/json" -X POST http://127.0.0.1:5000/user?token=value -d '{"role": "value", "email": "value", "password": "value", "fname": "value", "lname": “value"}'
+curl --header 'Content-type: application/json' --header 'Authorization: token=value' -X POST "http://127.0.0.1:5000/user?token=value" -d '{"email": "value", "password": "value", "fname": "value", "lname": “value"}'
 ```
 Get user:
 ```bash
-curl -X GET "http://127.0.0.1:5000/user?token=value&email=value"
+curl --header 'Authorization: token=value' -X GET "http://127.0.0.1:5000/user/email=value"
 
 Example output:
 {
-  "user": [
-    "admin", 
-    "guido@python.com", 
-    "2bb80d537b1da3e38bd30361aa855686bde0eacd7162fef6a25fe97bf527a25b", 
-    "Guido", 
-    "van Rossum"
-  ]
+  "7": {
+    "email": "guido@python.com",
+    "fname": "guido",
+    "lname": "van rossum",
+    "password": "b6602f58690ca41488e97cd28153671356747c951c55541b6c8d8b8493eb7143"
+  }
 }
 ```
 Delete user:
 ```bash
-curl -X DELETE "http://127.0.0.1:5000/user?token=value&email=value"
+curl --header 'Authorization: token=value' -X DELETE "http://127.0.0.1:5000/user/email=value"
 ```
 
 ### Workouts
 Create new workouts:
 ```bash
-curl -H "Content-type: application/json" -X POST http://127.0.0.1:5000/workouts?token=value -d '[{"u_id": value, "date": value, "type": value, "duration": value, "calories": value, "distance": value, "notes": "value"}, {"u_id": value, "date": value, "type": value, "duration": value, "calories": value, "distance": value, "notes": "value"}]'
+curl --header 'Content-type: application/json' --header 'Authorization: token=value' -X POST "http://127.0.0.1:5000/workouts" -d '[{"u_id": value, "date": value, "type": value, "duration": value, "calories": value, "distance": value, "notes": "value"}]'
 ```
 Get all workouts:
 ```bash
-curl -X GET "http://127.0.0.1:5000/workouts?token=value&u_id=value"
+curl --header 'Authorization: token=value' -X GET "http://127.0.0.1:5000/workouts?u_id=value"
 
 Example output:
 {
-  "workouts": {
     "9": {
       "calories": 805,
       "date": 1121213911,
@@ -105,13 +103,13 @@ Example output:
 ```
 Delete all workouts:
 ```bash
-curl -X DELETE "http://127.0.0.1:5000/workouts?token=value&u_id=value"
+curl --header 'Authorization: token=value' -X DELETE "http://127.0.0.1:5000/workouts?u_id=value"
 ```
 
 ### Signup
 Signup user and recieve token
 ```bash
-curl -H "Content-type: application/json" -X POST http://127.0.0.1:5000/signup -d '[{"email": "value", "password": "value"}]'
+curl --header 'Content-type: application/json' -X POST "http://127.0.0.1:5000/signup" -d '[{"email": "value", "password": "value"}]'
 ```
 
 ## Author

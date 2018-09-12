@@ -15,8 +15,9 @@ app = Flask('/')
 def token_required(d):
     @wraps(d)
     def decorated(*args, **kwargs):
-        if 'token' in request.args:
-            token = request.args.get('token')
+        if 'Authorization' in request.headers:
+            #token = request.args.get('token')
+            token = request.headers.get('Authorization')[6:]
             try:
                 data = jwt.decode(token, secret)
             except:
@@ -28,11 +29,11 @@ def token_required(d):
 
 @app.route("/user", methods = ['GET', 'POST', 'DELETE'])
 @token_required
-def api_user():
+def user():
     if request.method == 'GET':
         if 'email' in request.args:
             user = c.getUserDB(request.args['email'])
-            jdata = jsonify({'email': user[0], 'password': user[1], 'fname': user[2], 'lname': user[3]})
+            jdata = jsonify({user[0]: {'email': user[1], 'password': user[2], 'fname': user[3], 'lname': user[4]}})
             return make_response(jdata, 200)
         else:
             return make_response("HTTP/1.1 400 - Bad Request\n", 400)
@@ -56,11 +57,11 @@ def api_user():
 
 @app.route("/workouts", methods = ['GET', 'POST', 'DELETE'])
 @token_required
-def api_workouts():
+def workouts():
     if request.method == 'GET':
         if 'u_id' in request.args:
             workouts = c.getAllWorkoutsDB(request.args.get('u_id'))
-            return make_response(jsonify({'workouts': workouts}), 200)
+            return make_response(jsonify(workouts), 200)
         else:
             return make_response("HTTP/1.1 400 - Bad Request\n", 400)
 
@@ -85,7 +86,7 @@ def api_workouts():
         return make_response("HTTP/1.1 405 - Method Not Allowed\n", 405)
 
 @app.route("/signup", methods = ['POST'])
-def api_signup():
+def signup():
     if request.method == 'POST':
         if request.headers['Content-Type'] == 'application/json':
             data = request.json
