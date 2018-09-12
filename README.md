@@ -108,5 +108,11 @@ Delete all workouts:
 curl -X DELETE "http://127.0.0.1:5000/workouts?token=value&u_id=value"
 ```
 
+### Signup
+Signup user and recieve token
+```bash
+curl -H "Content-type: application/json" -X POST http://127.0.0.1:5000/signup -d '[{"email": "value", "password": "value"}]'
+```
+
 ## Author
 Jeremy J. Kerby
