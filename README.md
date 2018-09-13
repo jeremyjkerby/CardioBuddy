@@ -21,7 +21,7 @@ The Android application utilizes multi-window user interface, stores data locall
 **Note:** This application will replace an older version deployed on [Google Play](https://play.google.com/store/apps/details?id=com.cardiobuddy)
 
 ## Setup
-0. Clone repository:
+0. Clone repository
 ### Server
 1. You may need to install the following project dependcies:
 ```bash
@@ -39,7 +39,7 @@ $ python3 server.py
 TODO. Install from Android Studio.
 
 ## API Architecture
-Once the server is setup and running, you may execute the following API calls using cURL in a terminal to perform some actions as you would in the Android application. Rplace any occurrence of value with what is expected.
+Once the server is setup and running, you may execute the following API calls using cURL in a terminal to perform some actions as you would in the Android application. Replace any occurrence of "value" with what is expected.
 
 ### User
 Create new user:
@@ -100,7 +100,7 @@ curl --header 'Authorization: token=value' -X DELETE "http://127.0.0.1:5000/work
 ```
 
 ### Signup
-Signup user and recieve token
+Signup user and recieve token:
 ```bash
 curl --header 'Content-type: application/json' -X POST "http://127.0.0.1:5000/signup" -d '[{"email": "value", "password": "value"}]'
 ```
