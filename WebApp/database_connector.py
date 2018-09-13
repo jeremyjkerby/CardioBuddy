@@ -94,7 +94,7 @@ def getUser(email):
             print(err.msg)
     user = cursor.fetchone()
     cursor.close()
-    return user # return tuple
+    return user
 
 def deleteUser(email):
     """Delete user with given email"""
@@ -163,4 +163,3 @@ def deleteAllWorkouts(u_id):
     return None
 
 
-setup()

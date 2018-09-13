@@ -8,6 +8,10 @@ import database_connector as db
 
 
 """Database Methods"""
+def setupDB():
+    db.setup()
+    return
+
 def addUserDB(user):
     db.addUser(user)
     return

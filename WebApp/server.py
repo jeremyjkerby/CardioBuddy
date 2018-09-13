@@ -92,7 +92,7 @@ def signup():
             data = request.json
             if data[0]['email'] and data[0]['password']:
                 token = jwt.encode({'user' : data[0]['email'], 'exp' : datetime.datetime.utcnow() + datetime.timedelta(minutes=60)}, secret)
-                # save email, password, token to db
+                # save email, encrypted password, fname, lname
                 return jsonify({'token': token.decode('UTF-8')})
             else:
                 return make_response("HTTP/1.1 400 - Bad Request\n", 400)
@@ -101,8 +101,13 @@ def signup():
     else:
         return make_response("HTTP/1.1 405 - Method Not Allowed\n", 405)
 
+def setup():
+    c.setupDB()
+    return
+
 
 if __name__ == '__main__':
+    setup()
     app.config.from_pyfile("flask.cfg", silent=False)
     secret = app.config.get("SECRET")
     app.run()

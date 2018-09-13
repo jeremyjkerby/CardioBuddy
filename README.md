@@ -20,32 +20,26 @@ The Android application utilizes multi-window user interface, stores data locall
 
 **Note:** This application will replace an older version deployed on [Google Play](https://play.google.com/store/apps/details?id=com.cardiobuddy)
 
-## Installiation
-1. Server
-You may need to install the following project dependcies:
+## Setup
+0. Clone repository:
+### Server
+1. You may need to install the following project dependcies:
 ```bash
 brew install python3
 pip3 install flask mysql-connector pyjwt
 ```
+2. Modify flask.cfg values
+3. Modify mysql.cfg values
+4. Execute server. This will setup database and start server.
+```bash
+$ python3 server.py
+```
 
-Modify appsecret in server.py
-
-Modify mysql.cfg settings
-
-Run database_connector.py to setup the database.
-
-Run the server. $ python3 server.py
-
-2. Android
-
-TODO.
-
-Install from Android Studio.
+### Android
+TODO. Install from Android Studio.
 
 ## API Architecture
-There are two main paths; user, workouts
-
-Once there is a server setup, you may execute the following API calls using cURL in a terminal to perform some actions as you would in the Android application.
+Once the server is setup and running, you may execute the following API calls using cURL in a terminal to perform some actions as you would in the Android application. Rplace any occurrence of value with what is expected.
 
 ### User
 Create new user:
@@ -98,7 +92,6 @@ Example output:
       "note": "Second workout.",
       "type": 3
     }
-  }
 }
 ```
 Delete all workouts:
