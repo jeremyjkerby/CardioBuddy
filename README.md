@@ -26,7 +26,7 @@ The Android application utilizes multi-window user interface, stores data locall
 1. You may need to install the following project dependcies:
 ```bash
 brew install python3
-pip3 install flask mysql-connector pyjwt
+pip3 install flask mysql-connector-python pyjwt
 ```
 2. Modify flask.cfg values
 3. Modify mysql.cfg values
@@ -48,7 +48,7 @@ curl --header 'Content-type: application/json' --header 'Authorization: token=va
 ```
 Get user:
 ```bash
-curl --header 'Authorization: token=value' -X GET "http://127.0.0.1:5000/user/email=value"
+curl --header 'Authorization: token=value' -X GET "http://127.0.0.1:5000/user?email=value"
 
 Example output:
 {
@@ -62,7 +62,7 @@ Example output:
 ```
 Delete user:
 ```bash
-curl --header 'Authorization: token=value' -X DELETE "http://127.0.0.1:5000/user/email=value"
+curl --header 'Authorization: token=value' -X DELETE "http://127.0.0.1:5000/user?email=value"
 ```
 
 ### Workouts
@@ -70,7 +70,7 @@ Create new workouts:
 ```bash
 curl --header 'Content-type: application/json' --header 'Authorization: token=value' -X POST "http://127.0.0.1:5000/workouts" -d '[{"u_id": value, "date": value, "type": value, "duration": value, "calories": value, "distance": value, "notes": "value"}]'
 ```
-Get all workouts:
+Get all user workouts:
 ```bash
 curl --header 'Authorization: token=value' -X GET "http://127.0.0.1:5000/workouts?u_id=value"
 
@@ -94,7 +94,7 @@ Example output:
     }
 }
 ```
-Delete all workouts:
+Delete all user workouts:
 ```bash
 curl --header 'Authorization: token=value' -X DELETE "http://127.0.0.1:5000/workouts?u_id=value"
 ```
@@ -102,7 +102,7 @@ curl --header 'Authorization: token=value' -X DELETE "http://127.0.0.1:5000/work
 ### Signup
 Signup user and recieve token:
 ```bash
-curl --header 'Content-type: application/json' -X POST "http://127.0.0.1:5000/signup" -d '[{"email": "value", "password": "value"}]'
+curl --header 'Content-type: application/json' -X POST "http://127.0.0.1:5000/signup" -d '[{"email": "value", "password": "value", "fname": "value", "lname": "value"}]'
 ```
 
 ## Author
