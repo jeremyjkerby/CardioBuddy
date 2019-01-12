@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:text="Please enter workout information:"
+            android:textColor="#00543C" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:text="Date:"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:text="Type:"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/workoutType"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/radioBtnBike"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="5dp"
+                android:text="Elliptical"
+                android:textColor="#00543C" />
+
+            <RadioButton
+                android:id="@+id/radioBtnTreadmill"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="5dp"
+                android:text="Stair Climber"
+                android:textColor="#00543C" />
+
+            <RadioButton
+                android:id="@+id/radioBtnElliptical"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="5dp"
+                android:text="Stationary Bike"
+                android:textColor="#00543C" />
+
+            <RadioButton
+                android:id="@+id/radioBtnStair"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginBottom="5dp"
+                android:text="Treadmill"
+                android:textColor="#00543C" />
+
+            <RadioButton
+                android:id="@+id/radioBtnOther"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginLeft="25dp"
+                android:text="Other"
+                android:textColor="#00543C" />
+
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:text="Resistance:"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextResistance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:text="Duration:"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextDuration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:maxLength="4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:text="Distance:"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextDistance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:maxLength="6" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:text="Calories:"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextCalories"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="number"
+            android:maxLength="4" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:text="Note:"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editTextNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+            android:inputType="text"
+            android:maxLength="140" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:background="#00543C"
+            android:text="ADD"
+            android:textColor="#FDBB30">
+
+        </Button>
+
+        <!-- AdMob Banner Ad -->
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="5dp"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+
+    </LinearLayout>
+
+</ScrollView>
+

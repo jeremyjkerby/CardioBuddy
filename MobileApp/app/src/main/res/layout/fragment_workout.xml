@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:padding="5dp"
+        android:text="Workout summary:"
+        android:textColor="#00543C" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="" />
+
+        <TextView
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Duration"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Distance"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Calories"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Elliptical"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ellipticalMinutesLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/ellipticalDistanceLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/ellipticalCaloriesLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:padding="10dp"
+            android:text="Stair Climber"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/stairsMinutesLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/stairsDistanceLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/stairsCaloriesLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Stationary Bike"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/bikeMinutesLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/bikeDistanceLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/bikeCaloriesLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:padding="10dp"
+            android:text="Treadmill"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/treadmillMinutesLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/treadmillDistanceLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/treadmillCaloriesLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dip"
+            android:text=""
+            android:textColor="#00543C" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:padding="10dp"
+            android:text="Other"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/otherMinutesLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/otherDistanceLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/otherCaloriesLabel"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:padding="10dp"
+            android:text="Total"
+            android:textColor="#00543C"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/totalMinutesLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/totalDistanceLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+        <TextView
+            android:id="@+id/totalCaloriesLabel"
+            android:layout_weight="1"
+            android:background="#f0fff0"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text=""
+            android:textColor="#00543C" />
+
+    </TableRow>
+
+    <!-- AdMob Banner Ad -->
+    <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/fragmentWorkoutAdView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="10dp"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
+
+</TableLayout>
+
